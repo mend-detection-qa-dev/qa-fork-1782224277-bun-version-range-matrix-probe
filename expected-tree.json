@@ -1,0 +1,222 @@
+{
+  "schema_version": "1.0",
+  "pm": "bun",
+  "pm_version_tested": "1.1.30",
+  "source_file": "bun.lock",
+  "generated_at": "2026-05-15T00:00:00+00:00",
+  "root": {
+    "name": "bun-version-range-matrix-probe",
+    "version": "0.1.0",
+    "dependencies": [
+      "is-even",
+      "is-odd",
+      "left-pad",
+      "lodash",
+      "ms",
+      "tslib",
+      "zod"
+    ]
+  },
+  "packages": {
+    "lodash": {
+      "version": "4.18.1",
+      "source": "registry",
+      "group": "main",
+      "constraint_operator": "caret",
+      "declared_constraint": "^4.17.0",
+      "dependencies": [],
+      "source_detail": {
+        "registry": "https://registry.npmjs.org"
+      }
+    },
+    "is-odd": {
+      "version": "3.0.1",
+      "source": "registry",
+      "group": "main",
+      "constraint_operator": "tilde",
+      "declared_constraint": "~3.0.0",
+      "dependencies": [
+        "is-number"
+      ],
+      "source_detail": {
+        "registry": "https://registry.npmjs.org"
+      }
+    },
+    "left-pad": {
+      "version": "1.3.0",
+      "source": "registry",
+      "group": "main",
+      "constraint_operator": "exact",
+      "declared_constraint": "1.3.0",
+      "dependencies": [],
+      "source_detail": {
+        "registry": "https://registry.npmjs.org"
+      }
+    },
+    "is-even": {
+      "version": "1.0.0",
+      "source": "registry",
+      "group": "main",
+      "constraint_operator": "wildcard",
+      "declared_constraint": "*",
+      "dependencies": [
+        "is-odd@0.1.2"
+      ],
+      "source_detail": {
+        "registry": "https://registry.npmjs.org"
+      }
+    },
+    "tslib": {
+      "version": "2.8.1",
+      "source": "registry",
+      "group": "main",
+      "constraint_operator": "compound-and",
+      "declared_constraint": ">=2.0.0 <3.0.0",
+      "dependencies": [],
+      "source_detail": {
+        "registry": "https://registry.npmjs.org"
+      }
+    },
+    "ms": {
+      "version": "2.1.3",
+      "source": "registry",
+      "group": "main",
+      "constraint_operator": "compound-or",
+      "declared_constraint": "^2.0.0 || ^3.0.0",
+      "dependencies": [],
+      "source_detail": {
+        "registry": "https://registry.npmjs.org"
+      }
+    },
+    "zod": {
+      "version": "4.4.3",
+      "source": "registry",
+      "group": "main",
+      "constraint_operator": "prerelease",
+      "declared_constraint": "^4.0.0-beta.1",
+      "dependencies": [],
+      "source_detail": {
+        "registry": "https://registry.npmjs.org"
+      }
+    },
+    "is-number": {
+      "version": "6.0.0",
+      "source": "registry",
+      "group": "main",
+      "constraint_operator": null,
+      "declared_constraint": null,
+      "dependencies": [],
+      "source_detail": {
+        "registry": "https://registry.npmjs.org"
+      }
+    },
+    "is-odd@0.1.2": {
+      "version": "0.1.2",
+      "source": "registry",
+      "group": "main",
+      "constraint_operator": null,
+      "declared_constraint": null,
+      "dependencies": [
+        "is-number@3.0.0"
+      ],
+      "source_detail": {
+        "registry": "https://registry.npmjs.org"
+      }
+    },
+    "is-number@3.0.0": {
+      "version": "3.0.0",
+      "source": "registry",
+      "group": "main",
+      "constraint_operator": null,
+      "declared_constraint": null,
+      "dependencies": [],
+      "source_detail": {
+        "registry": "https://registry.npmjs.org"
+      }
+    }
+  },
+  "version_constraint_observations": [
+    {
+      "dep": "lodash",
+      "catalog_id": "C1",
+      "operator": "caret",
+      "declared": "^4.17.0",
+      "resolved": "4.18.1",
+      "resolution_rule": "Allows any 4.x.y where x >= 17 (minor + patch bumps). Picks highest satisfying version.",
+      "failure_mode": "Parser rejects or normalises to exact version — reported as lodash@4.17.0."
+    },
+    {
+      "dep": "is-odd",
+      "catalog_id": "C2",
+      "operator": "tilde",
+      "declared": "~3.0.0",
+      "resolved": "3.0.1",
+      "resolution_rule": "Allows 3.0.x only (patch bumps). Tilde freezes minor at 0.",
+      "failure_mode": "Tilde treated as caret — resolves to 3.0.1 anyway here, but would differ with wider gap. Or parser falls back to exact 3.0.0."
+    },
+    {
+      "dep": "left-pad",
+      "catalog_id": "C3",
+      "operator": "exact",
+      "declared": "1.3.0",
+      "resolved": "1.3.0",
+      "resolution_rule": "No operator means exact pin. Resolved version MUST equal declared version.",
+      "failure_mode": "Any version other than 1.3.0 reported — parser upgrade-resolved an exact pin."
+    },
+    {
+      "dep": "is-even",
+      "catalog_id": "C4",
+      "operator": "wildcard",
+      "declared": "*",
+      "resolved": "1.0.0",
+      "resolution_rule": "Wildcard resolves to the latest dist-tag at install time. Non-deterministic across installs but lockfile pins it.",
+      "failure_mode": "Parser treats * as unresolvable → dep dropped. Or resolved to a wrong version because parser used a stale dist-tag."
+    },
+    {
+      "dep": "tslib",
+      "catalog_id": "C5",
+      "operator": "compound-and",
+      "declared": ">=2.0.0 <3.0.0",
+      "resolved": "2.8.1",
+      "resolution_rule": "Both bounds must be satisfied simultaneously. Picks highest version in the intersection.",
+      "failure_mode": "Parser rejects space-separated compound range as malformed → dep dropped. Or misreads second bound, resolves to 3.x."
+    },
+    {
+      "dep": "ms",
+      "catalog_id": "C6",
+      "operator": "compound-or",
+      "declared": "^2.0.0 || ^3.0.0",
+      "resolved": "2.1.3",
+      "resolution_rule": "OR of two sub-ranges; Bun picks highest satisfying. No stable ms@3.x existed at generation time, so ^2.0.0 wins → 2.1.3.",
+      "failure_mode": "Parser sees '||' as invalid separator → dep dropped. Or parser picks first token only (^2.0.0) without evaluating the right-hand side."
+    },
+    {
+      "dep": "zod",
+      "catalog_id": "C7",
+      "operator": "prerelease",
+      "declared": "^4.0.0-beta.1",
+      "resolved": "4.4.3",
+      "resolution_rule": "Caret with a pre-release lower bound. Semver allows stable releases in the same major to satisfy this range. Picks latest stable 4.x.",
+      "failure_mode": "Parser pins to 4.0.0-beta.1 exactly (treats pre-release caret as pinning to that pre-release). Or parser rejects the pre-release tag in the constraint entirely → dep dropped."
+    }
+  ],
+  "project_metadata": {
+    "source_file": "bun.lock",
+    "groups": [
+      "main"
+    ]
+  },
+  "warnings": [
+    "Pure semver-syntax stress test — failures here are parser bugs, not ecosystem drift. Each operator exercises a distinct code path in Bun's semver resolver.",
+    "C1 (caret): allows minor+patch bumps above the declared floor. Most common operator; baseline sanity for any resolution failure investigation.",
+    "C2 (tilde): allows patch bumps only. A parser that confuses tilde with caret will resolve the same version here (3.0.1) but would diverge on packages with many minor versions.",
+    "C3 (exact): lockfile-pinning pattern. Mend must report the version exactly as declared in manifest — no upgrade logic applies.",
+    "C4 (wildcard *): resolves to latest dist-tag at install time. Non-deterministic before install; deterministic after lockfile is written. If Mend re-resolves instead of reading the lockfile, it may produce a different version than what is encoded here.",
+    "C5 (compound AND): space-separated bounds. Frequently mishandled by parsers that split on whitespace without recognising the bound context. If the dep is missing from Mend output, the parser dropped the compound form.",
+    "C6 (compound OR): '||'-separated ranges. Rarely handled correctly by non-npm parsers. If ms is missing, the parser rejected the '||' token. If ms is present but at the wrong version, the parser applied only the first sub-range.",
+    "C7 (pre-release lower bound): the most failure-prone class. ^4.0.0-beta.1 is valid semver; stable 4.x releases satisfy it. A parser that refuses pre-release strings in constraints will drop zod entirely. A parser that pins to the pre-release will report zod@4.0.0-beta.1 instead of zod@4.4.3.",
+    "Bun is NOT in the Mend install-tool list. Detection is lockfile-driven only (bun.lock JSONC parsing). The version_constraint_observations above document what Mend SHOULD emit; any deviation indicates a specific semver parser bug.",
+    "Dual is-number instances: is-number@6.0.0 (via is-odd@3.0.1) and is-number@3.0.0 (via is-odd@0.1.2 → is-even@1.0.0). If Mend deduplicates to a single version, the transitive chain is not correctly traversed.",
+    "Dual is-odd instances: is-odd@3.0.1 (direct, C2 tilde) and is-odd@0.1.2 (transitive via is-even). Both must appear with distinct versions. If Mend reports only one, the tree is incomplete."
+  ]
+}
